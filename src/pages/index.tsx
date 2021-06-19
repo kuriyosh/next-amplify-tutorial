@@ -39,6 +39,9 @@ const handleCreatePost = async (event: React.SyntheticEvent) => {
         },
       },
     })) as GraphQLResult<CreatePostMutation>;
+    if (!!data?.createPost?.id) {
+      window.location.href = `/posts/${data.createPost.id}`;
+    }
   } catch ({ errors }) {
     console.log(errors);
   }
